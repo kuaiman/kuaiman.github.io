@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.2.6 -->
+
+  <!-- Title -->
+
+  <title>
+
+    浏览器缓存知识归纳 | IO10|PangJian&#39;s Blog
+  </title>
+
+  <!-- Favicons -->
+  <link rel="icon shortcut" type="image/ico" href="favicon.png">
+  <link rel="icon" sizes="192x192" href="/img/favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Meta & Info -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0097A7">
+  <meta name="author" content="Pang Jian">
+  <meta name="description" content="简约 是复杂的最终形式">
+  <meta name="keywords" content="null">
+
+  <!--iOS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-title" content="Title">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="480">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="IO10|PangJian&#39;s Blog">
+
+  <!-- The Open Graph protocol -->
+  <meta property="og:url" content="http://www.pangjian.me">
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="浏览器缓存知识归纳 | IO10|PangJian&#39;s Blog">
+  <meta property="og:description" content="简约 是复杂的最终形式">
+
+  <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+  <!-- Import CSS -->
+  <link rel="stylesheet" href="/css/material.min.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.min.css" type="text/css">
+  <!-- Config CSS -->
+
+
+  <!-- Other Styles -->
+  <style>
+    body,
+    html {
+      font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+
+    a {
+      color: #00838F;
+    }
+
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge {
+      background-color: #0097A7 !important;
+    }
+
+    /* Sidebar User Drop Down Menu Text Color */
+
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+      color: #0097A7 !important;
+    }
+
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover>a,
+    .sidebar-colored .sidebar-nav li:hover>a i,
+    .sidebar-colored .sidebar-nav li>a:hover,
+    .sidebar-colored .sidebar-nav li>a:hover i,
+    .sidebar-colored .sidebar-nav li>a:focus i,
+    .sidebar-colored .sidebar-nav>.open>a,
+    .sidebar-colored .sidebar-nav>.open>a:hover,
+    .sidebar-colored .sidebar-nav>.open>a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+      color: #0097A7 !important;
+    }
+
+    .toTop {
+      background: #757575 !important;
+    }
+
+    .material-layout .material-post>.material-nav,
+    .material-layout .material-index>.material-nav,
+    .material-nav a {
+      color: #757575;
+    }
+
+    #scheme-Paradox .MD-burger-layer {
+      background-color: #757575;
+    }
+
+    #scheme-Paradox #post-toc-trigger-btn {
+      color: #757575;
+    }
+
+    .post-toc a:hover {
+      color: #00838F;
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width:480px) {
+      .post_thumbnail-custom {
+        min-height: 200px;
+      }
+    }
+
+    @media screen and (min-width: 481px) {
+      .post_thumbnail-custom {
+        min-height: 350px;
+      }
+    }
+  </style>
+
+
+  <!-- Theme Background Related-->
+
+  <style>
+    body {
+      background-image: url(/img/bg.png);
+    }
+  </style>
+
+
+
+
+  <!-- Fade Effect -->
+
+  <style>
+    .fade {
+      transition: all 800ms linear;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+
+    .fade.out {
+      opacity: 0;
+    }
+  </style>
+  <script src="/js/jquery.min.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" href="/css/highlight/atom-one-dark.css" type="text/css">
+
+  <!-- UC Browser Compatible-->
+  <script>
+    var agent = navigator.userAgent.toLowerCase();
+    if (agent.indexOf('ucbrowser') > 0) {
+      document.write('<link rel="stylesheet" href="/css/uc.css" type="text/css">');
+      alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+    }
+  </script>
+
+  <!-- Custom Head -->
+
+</head>
+
+
+<body id="scheme-Paradox">
+  <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+
+
+    <!-- Main Container -->
+    <main class="material-layout__content" id="main">
+      <div id="pjax">
+
+        <!-- Top Anchor -->
+        <div id="top"></div>
+
+
+        <!-- Hamburger Button -->
+        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+
+
+        <!-- Post TOC -->
+
+        <!-- Back Button -->
+        <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+        <!-- Left aligned menu below button -->
+        <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+        <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+          <ol class="post-toc">
+            <li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#浏览器缓存分类"><span class="post-toc-number">1.</span> <span class="post-toc-text">浏览器缓存分类</span></a></li>
+            <li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#强缓存"><span class="post-toc-number">2.</span> <span class="post-toc-text">强缓存</span></a>
+              <ol class="post-toc-child">
+                <li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Expires"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Expires</span></a></li>
+                <li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cache-Control"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Cache-Control</span></a></li>
+              </ol>
+            </li>
+            <li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#协商缓存"><span class="post-toc-number">3.</span> <span class="post-toc-text">协商缓存</span></a>
+              <ol class="post-toc-child">
+                <li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Last-Modify-If-Modify-Since"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Last-Modify/If-Modify-Since</span></a></li>
+                <li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ETag-If-None-Match"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">ETag/If-None-Match</span></a></li>
+                <li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ETag扩展说明"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">* ETag扩展说明</span></a></li>
+              </ol>
+            </li>
+            <li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#生产问题分析"><span class="post-toc-number">4.</span> <span class="post-toc-text">生产问题分析</span></a></li>
+          </ol>
+
+          <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+        </ul>
+
+
+        <!-- Layouts -->
+
+        <!-- Post Module -->
+        <div class="material-post_container">
+
+          <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+              <!-- Post Header(Thumbnail & Title) -->
+              <!-- Paradox Post Header -->
+
+              <!-- Custom Thumbnail -->
+              <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/resources/web-cache-detail/web-cache.png)">
+
+                <p class="article-headline-p">
+                  浏览器缓存知识归纳
+                </p>
+              </div>
+
+
+              <!-- Paradox Post Info -->
+              <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+                <!-- Author Avatar -->
+                <div id="author-avatar">
+                  <img src="/img/myavatar.jpg" width="44px" height="44px" alt="Author Avatar" />
+                </div>
+                <!-- Author Name & Date -->
+                <div>
+                  <strong>Pang Jian</strong>
+                  <span>3月 05, 2016</span>
+                </div>
+
+                <div class="section-spacer"></div>
+                <div>
+                  <span class="post-count">总字数：1,807</span>
+                  <span class="post-count">预计阅读：6 min</span>
+                </div>
+
+                <!-- Favorite -->
+                <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+                <!-- Qrcode -->
+
+                <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+                  <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACU0lEQVR42u3aMXLDMAwEQP//00mbxvQBFCHFs6oyCkVrVRCcI14/X3298PDw8PDw8PDwHsZ7xdfb6f789934ZObqU29/Cw8PD2+E92GpfTNmfb/66vn86zF4eHh4k7xkyS4s0Ms7yVPVd8PDw8P7L7x8q52z8fDw8L6Vl2x880+TFxI8PDy85/CuCmrXI5NScVvWgoeHhxfz8kOm+b9Hz/fw8PDwAl65pWkjOOgt/VtNV3h4eHgHeL3DrSQ+WM+ZtBE0m8Dw8PDwDvPWgUK1MCTP9sLiPETGw8PDO83Ll+zq+Co4j3TLdQ8PDw/vUt4+NVnK8y1ydXuNh4eHdy+vGtf27uSfIAHj4eHh3cXLW0h7W+Hq1fsQeHh4ePO8XqCQH2X1SkU1ksDDw8M7zcth1TBiJ+qtxsd4eHh4k7xqkajGvtWRFzyLh4eHN8jrHWiVj/bjGXrHYHh4eHgzvP2wtRdhDDVd4eHh4Y3w8ldJQopq1FvdvuPh4eFN8vLluxfC5odheeH58LZ4eHh4I7zeq6xji522gPy3PoQReHh4eMd41fB0Z4ZePFGILfDw8PDGefub6eps126v8fDw8CZ5+dK805iVj8mfwsPDw5vkVa9ewNrboDdnwMPDwzvM6y3KOyWkF9E2m67w8PDwjvGqxaDaRFXdvl9cGPDw8PCO8XYW9KvaC/IShYeHh/e/eFVqrwWhCsbDw8N7Pq9aBvIwoloM8PDw8O7iJWFEr4kq/zTrsBgPDw/vObydCODepis8PDy8ed73XXh4eHh4eHh4eA+4fgGJ9Ei07leOawAAAABJRU5ErkJggg==">
+                </ul>
+
+
+                <!-- Tags (bookmark) -->
+
+                <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+                  <li class="mdl-menu__item">
+                    <a class="post_tag-link" href="/tags/cache/">cache</a>
+                </ul>
+
+
+                <!-- Share -->
+                <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+
+                  <!-- Leancloud Views -->
+                  <a class="post_share-link" href="#">
+                    <li class="mdl-menu__item">
+                      <span id="/2016/03/05/web-cache-detail/" class="leancloud-views_num" data-flag-title="浏览器缓存知识归纳">
+     &nbsp;浏览量
+</span>
+                    </li>
+                  </a>
+
+
+
+
+                  <!-- Share Weibo -->
+
+                  <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=浏览器缓存知识归纳&url=http://www.pangjian.me//2016/03/05/web-cache-detail/index.html&pic=&searchPic=false&style=simple" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到微博
+                    </li>
+                  </a>
+
+
+                  <!-- Share Twitter -->
+
+                  <a class="post_share-link" href="https://twitter.com/intent/tweet?text=浏览器缓存知识归纳&url=http://www.pangjian.me//2016/03/05/web-cache-detail/index.html&via=Pang Jian" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 Twitter
+                    </li>
+                  </a>
+
+
+                  <!-- Share Facebook -->
+
+                  <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.pangjian.me//2016/03/05/web-cache-detail/index.html" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 Facebook
+                    </li>
+                  </a>
+
+
+                  <!-- Share Google+ -->
+
+                  <a class="post_share-link" href="https://plus.google.com/share?url=http://www.pangjian.me//2016/03/05/web-cache-detail/index.html" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 Google+
+                    </li>
+                  </a>
+
+
+                  <!-- Share LinkedIn -->
+
+                  <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.pangjian.me//2016/03/05/web-cache-detail/index.html&title=浏览器缓存知识归纳" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 LinkedIn
+                    </li>
+                  </a>
+
+
+                  <!-- Share QQ -->
+
+                  <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=IO10|PangJian&#39;s Blog&title=浏览器缓存知识归纳&summary=简约 是复杂的最终形式&pics=http://www.pangjian.mefavicon.png&url=http://www.pangjian.me/2016/03/05/web-cache-detail/index.html"
+                    target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 QQ
+                    </li>
+                  </a>
+
+
+                  <!-- Share Telegram -->
+
+                </ul>
+              </div>
+
+
+              <!-- Post Content -->
+              <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+
+                <p>写在开头：这篇文章是打算分享到单位内部的材料。归纳浏览器缓存也是对一个生产问题的分析总结出来的。这片文章经过脱敏以后发表到个人博客上面吧。</p>
+                <p>浏览器缓存（Browser Catching）是为了节约网络的资源加速浏览，浏览器在用户磁盘上对最近请求过的文档进行存储，当访问者再次请求这个页面时，浏览器就可以从本地磁盘显示文档，这样就可以加速页面的阅览。 —-摘自《百度百科》</p>
+                <p>浏览器缓存是提升网页性能的一大利器，但是，也是一把双刃剑。利用的好网页的性能会有大幅度提升，服务器的压力也会减小。利用的不好，也会遇到很多的问题。本文结合浏览器缓存的知识，结合真实案例进行分析，希望对读者有所帮助。<br>
+                  <a id="more"></a>
+                </p>
+                <h1 id="浏览器缓存分类"><a href="#浏览器缓存分类" class="headerlink" title="浏览器缓存分类"></a>浏览器缓存分类</h1>
+                <p>浏览器缓存分为强缓存和协商缓存，浏览器加载一个页面的简单流程如下：</p>
+                <ol>
+                  <li>浏览器先根据这个资源的http头信息来判断是否命中强缓存。如果命中则直接加在缓存中的资源，并不会将请求发送到服务器。</li>
+                  <li>如果未命中强缓存，则浏览器会将资源加载请求发送到服务器。服务器来判断浏览器本地缓存是否失效。若可以使用，则服务器并不会返回资源信息，浏览器继续从缓存加载资源。</li>
+                  <li>如果未命中协商缓存，则服务器会将完整的资源返回给浏览器，浏览器加载新资源，并更新缓存。
+                    <h1 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h1>命中强缓存时，浏览器并不会将请求发送给服务器。在Chrome的开发者工具中看到http的返回码是200，但是在Size列会显示为(from cache)。<br><img src="/resources/web-cache-detail/cache1.png" alt="强缓存"><br>强缓存是利用http的返回头中的Expires或者Cache-Control两个字段来控制的，用来表示资源的缓存时间。
+                    <h2 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h2>该字段会返回一个时间，比如Expires:Thu,31 Dec 2037 23:59:59 GMT。这个时间代表着这个资源的失效时间，也就是说在2037年12月31日23点59分59秒之前都是有效的，即命中缓存。这种方式有一个明显的缺点，由于失效时间是一个绝对时间，所以当客户端本地时间被修改以后，服务器与客户端时间偏差变大以后，就会导致缓存混乱。于是发展出了Cache-Control。
+                    <h2 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h2>Cache-Control是一个相对时间，例如Cache-Control:3600，代表着资源的有效期是3600秒。由于是相对时间，并且都是与客户端时间比较，所以服务器与客户端时间偏差也不会导致问题。<br>Cache-Control与Expires可以在服务端配置同时启用或者启用任意一个，同时启用的时候Cache-Control优先级高。</li>
+                </ol>
+                <h1 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h1>
+                <p>若未命中强缓存，则浏览器会将请求发送至服务器。服务器根据http头信息中的Last-Modify/If-Modify-Since或Etag/If-None-Match来判断是否命中协商缓存。如果命中，则http返回码为304，浏览器从缓存中加载资源。</p>
+                <h2 id="Last-Modify-If-Modify-Since"><a href="#Last-Modify-If-Modify-Since" class="headerlink" title="Last-Modify/If-Modify-Since"></a>Last-Modify/If-Modify-Since</h2>
+                <p>浏览器第一次请求一个资源的时候，服务器返回的header中会加上Last-Modify，Last-modify是一个时间标识该资源的最后修改时间，例如Last-Modify: Thu,31 Dec 2037 23:59:59 GMT。<br><img src="/resources/web-cache-detail/last-modify.png" alt="Last-Modify"><br>当浏览器再次请求该资源时，上送的请求头中会包含If-Modify-Since，该值为缓存之前返回的Last-Modify。服务器收到If-Modify-Since后，根据资源的最后修改时间判断是否命中缓存。<br>
+                  <img src="/resources/web-cache-detail/if-modify-since.png" alt="If-Modify-Since"><br>如果命中缓存，则返回http304，并且不会返回资源内容，并且不会返回Last-Modify。由于对比的服务端时间，所以客户端与服务端时间差距不会导致问题。但是有时候通过最后修改时间来判断资源是否修改还是不太准确（资源变化了最后修改时间也可以一致）。于是出现了ETag/If-None-Match。</p>
+                <h2 id="ETag-If-None-Match"><a href="#ETag-If-None-Match" class="headerlink" title="ETag/If-None-Match"></a>ETag/If-None-Match</h2>
+                <p>与Last-Modify/If-Modify-Since不同的是，Etag/If-None-Match返回的是一个校验码（ETag: entity tag）。ETag可以保证每一个资源是唯一的，资源变化都会导致ETag变化*。服务器根据浏览器上送的If-None-Match值来判断是否命中缓存。<br><img src="/resources/web-cache-detail/etag.png" alt="ETag"></p>
+                <h2 id="ETag扩展说明"><a href="#ETag扩展说明" class="headerlink" title="* ETag扩展说明"></a>* ETag扩展说明</h2>
+                <p>我们对ETag寄予厚望，希望它对于每一个url生成唯一的值，资源变化时ETag也发生变化。神秘的Etag是如何生成的呢？以Apache为例，ETag生成靠以下几种因子</p>
+                <ol>
+                  <li>文件的i-node编号，此i-node非彼iNode。是Linux/Unix用来识别文件的编号。是的，识别文件用的不是文件名。使用命令’ls –I’可以看到。</li>
+                  <li>文件最后修改时间</li>
+                  <li>文件大小<br>生成Etag的时候，可以使用其中一种或几种因子，使用抗碰撞散列函数来生成。所以，理论上ETag也是会重复的，只是概率小到可以忽略。
+                    <h1 id="生产问题分析"><a href="#生产问题分析" class="headerlink" title="生产问题分析"></a>生产问题分析</h1>背景：某次投产，某系统投产后由于强缓存设置时间不恰当导致变更的功能没有体现。后来通过变更文件路径强行解决问题。<br>变更上下文根，导致URL变化一定可以解决问题。但我们不可能每一次都这么做；还有，在浏览器端关闭缓存、或者清除缓存后再继续浏览、同时使用Ctrl+F5刷新，也可以解决问题，但是我们也不可能让每一个客户在投产后都做一次这个操作。<br>那我们怎么办呢？从问题原因来看，是将经常变化的资源缓存时间设置的过长导致的。理论上来讲，只要正确划分经常变化资源与不经常变化资源就可以解决问题。但是谁也不能保证不经常变化的资源就一定不会变化。<br>万一不经常变化的资源变更了怎么办呢？在资源请求的URL中增加一个参数，比如：css/main.css?v=20160105。这个参数是一个版本号，客户化在js代码中，每一次投产的时候变更一下，当这个参数变化的时候，强缓存都会失效并重新加载。这样一来，即使是不常变化的资源，投产以后也需要重新加载。这样就完美的解决了问题。</li>
+                </ol>
+                <p>本文参考数篇技术博客、百度百科、维基百科、Apache官方说明以及自己的理解完成，如有不正确的地方欢迎斧正。<br>EOF<br>
+                  <span class='source'><blockquote class='source'><p>转载请注明出处：http://www.pangjian.me/2016/03/05/web-cache-detail/</p><p>访问原文「<a href='http://www.pangjian.me/2016/03/05/web-cache-detail/'>浏览器缓存知识归纳</a>」获取最佳阅读体验并参与讨论</p></blockquote></span>
+                  <script type="text/javascript">
+                    (function() {
+                      Element.prototype.remove = function() {
+                        this.parentElement.removeChild(this);
+                      }
+                      NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+                        for (var i = this.length - 1; i >= 0; i--) {
+                          if (this[i] && this[i].parentElement) {
+                            this[i].parentElement.removeChild(this[i]);
+                          }
+                        }
+                      }
+                      var domain = document.domain;
+                      var white_list = ['pangjian.info', 'www.pangjian.info', 'pangjian.me', 'www.pangjian.me', 'localhost', '127.0.0.1'];
+                      if (white_list.indexOf(domain) >= 0) {
+                        var elements = document.getElementsByClassName('source');
+                        elements.remove();
+                      }
+                    })()
+                  </script>
+
+                </p>
+
+
+
+              </div>
+
+
+
+              <!-- Post Comments -->
+
+              <!-- 使用多说评论 -->
+              <link rel="stylesheet" href="/css/duoshuo.min.css" type="text/css">
+              <style>
+                #ds-thread #ds-reset .ds-post-button {
+                  background-color: #0097A7 !important;
+                }
+
+                #ds-wrapper #ds-reset .ds-icons-32 {
+                  background-color: #0097A7 !important;
+                }
+
+                #ds-reset .ds-highlight {
+                  color: #0097A7 !important;
+                }
+              </style>
+              <div id="comments">
+                <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="2016/03/05/web-cache-detail/" data-url="http://www.pangjian.me/2016/03/05/web-cache-detail/" data-title="浏览器缓存知识归纳">
+                </div>
+                <!-- 多说评论框 end -->
+              </div>
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+              <!-- Prev Nav -->
+
+              <a href="/2016/05/25/travis-ci-hexo/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+
+
+              <!-- Section Spacer -->
+              <div class="section-spacer"></div>
+
+              <!-- Next Nav -->
+
+              <a href="/2016/02/07/happy-new-year-2016/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+
+            </nav>
+          </div>
+        </div>
+
+
+        <!-- Overlay For Active Sidebar -->
+        <div class="sidebar-overlay"></div>
+
+        <!-- Material sidebar -->
+        <aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+          <div id="sidebar-main">
+            <!-- Sidebar Header -->
+            <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+              <!-- Top bar -->
+              <div class="top-bar"></div>
+
+              <!-- Sidebar toggle button -->
+              <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+              <!-- Sidebar Avatar -->
+              <div class="sidebar-image">
+                <img src="/img/myavatar.jpg" alt="Pang Jian's avatar">
+              </div>
+
+              <!-- Sidebar Email -->
+              <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        pangjian1010@gmail.com
+        <b class="caret"></b>
+    </a>
+            </div>
+
+            <!-- Sidebar Navigation  -->
+            <ul class="nav sidebar-nav">
+              <!-- User dropdown  -->
+              <li class="dropdown">
+                <ul id="settings-dropdown" class="dropdown-menu">
+
+                  <li>
+                    <a href="mailto:pangjian1010@gamil.com" target="_blank" title="Email Me">
+                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+
+              <!-- Homepage -->
+              <li id="sidebar-first-li">
+                <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+            主页
+        </a>
+              </li>
+
+              <!-- I'm Feeling Lucky -->
+              <!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+    -->
+
+              <!-- Archives  -->
+              <li class="dropdown">
+                <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2016/02/">二月 2016<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2016/01/">一月 2016<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/12/">十二月 2015<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/11/">十一月 2015<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/10/">十月 2015<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/09/">九月 2015<span class="sidebar_archives-count">2</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/03/">三月 2015<span class="sidebar_archives-count">2</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/02/">二月 2015<span class="sidebar_archives-count">2</span></a>
+                </ul>
+                </li>
+
+                <!-- Categories  -->
+
+
+                <!-- Divider -->
+                <li class="divider"></li>
+
+
+                <!-- Pages  -->
+
+                <li>
+                  <a href="/About" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+                </li>
+
+                <li>
+                  <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">cloud circle</i>
+                
+                标签云
+            </a>
+                </li>
+
+                <li>
+                  <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                友情链接
+            </a>
+                </li>
+
+
+                <!-- Article Numebr  -->
+                <li>
+                  <a href="/archives">
+            文章总数
+            <span class="sidebar-badge">17</span>
+        </a>
+                </li>
+            </ul>
+
+            <!-- Sidebar Divider -->
+            <div class="sidebar-divider"></div>
+
+            <!-- Sidebar Footer -->
+            <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+            <!-- Theme Material
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+ -->
+            <!-- Help & Support -->
+            <!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+    sidebar.help
+    <span class="mdl-button__ripple-container">
+      <span class="mdl-ripple"></span>
+    </span>
+  </div>
+</a>
+-->
+
+            <!-- Feedback -->
+            <!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+            <!-- Abount Theme -->
+            <!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+          </div>
+
+          <!-- Sidebar Sponsor -->
+
+        </aside>
+
+      </div>
+
+
+      <!-- Footer Top Button -->
+      <div class="toTop-wrap">
+        <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+      </div>
+
+
+      <!--Footer-->
+      <footer class="mdl-mini-footer" id="bottom">
+
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+          <!-- Twitter -->
+
+
+          <!-- Facebook -->
+
+
+          <!-- Google + -->
+
+          <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button></a>
+
+
+          <!-- Weibo -->
+
+          <a href="http://weibo.com/siriuspj" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button></a>
+
+
+          <!-- Instagram -->
+
+
+          <!-- Tumblr -->
+
+
+          <!-- Github -->
+
+          <a href="https://github.com/pangjian" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button></a>
+
+
+          <!-- LinkedIn -->
+
+          <a href="https://www.linkedin.com/in/健-庞-44777310b" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-linkedin.png);">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button></a>
+
+
+          <!-- Zhihu -->
+
+
+          <!-- Bilibili -->
+
+
+          <!-- Telegram -->
+
+        </div>
+
+        <!--Copyright-->
+        <div id="copyright">Copyright&nbsp;©&nbsp;
+          <script type="text/javascript">
+            var fd = new Date();
+            document.write(fd.getFullYear());
+          </script>&nbsp;IO10|PangJian's Blog
+          <br>Documentation licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"><b>CC BY-SA 4.0</b></a>.
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+          <div>
+            <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+            <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+          </div>
+        </div>
+
+      </footer>
+
+      <!-- Import File -->
+      <script src="/js/highlight.min.js" type="text/javascript"></script>
+      <script src="/js/js.js" type="text/javascript"></script>
+      <script src="/js/nprogress.js" type="text/javascript"></script>
+
+      <script type="text/javascript">
+        NProgress.configure({
+          showSpinner: true
+        });
+        NProgress.start();
+
+        $('#nprogress .bar').css({
+          'background': '#FF4081'
+        });
+        $('#nprogress .peg').css({
+          'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+        });
+        $('#nprogress .spinner-icon').css({
+          'border-top-color': '#FF4081',
+          'border-left-color': '#FF4081'
+        });
+
+        setTimeout(function() {
+          NProgress.done();
+          $('.fade').removeClass('out');
+        }, 800);
+      </script>
+
+
+      <script src="/js/smoothscroll.js" type="text/javascript"></script>
+
+
+
+
+      <!-- Leancloud -->
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("BvJcby3BNlDWQWq9qjji2NEK-gzGzoHsz", "3IcnGJ5Ad8PCCzUe2vLuDIaz");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+              success: function(results) {
+                if (results.length === 0) {
+                  var content = '0 ' + $(document.getElementById(url)).text();
+                  $(document.getElementById(url)).text(content);
+                  return;
+                }
+                for (var i = 0; i < results.length; i++) {
+                  var object = results[i];
+                  var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                  $(document.getElementById(url)).text(content);
+                }
+              },
+              error: function(object, error) {
+                console.log('Error: ' + error.code + ' ' + error.message);
+              }
+            });
+          });
+        }
+
+        function addCount(Counter) {
+          var Counter = AV.Object.extend('Counter');
+          url = $('.leancloud-views_num').attr('id').trim();
+          title = $('.leancloud-views_num').attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+          query.equalTo('url', url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                  success: function(counter) {
+                    var content = counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                    $(document.getElementById(url)).text(content);
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                newcounter.set('title', title);
+                newcounter.set('url', url);
+                newcounter.set('time', 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    console.log('newcounter.get(\'time\')=' + newcounter.get('time'));
+                    var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                    $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + ' ' + error.message);
+            }
+          });
+        }
+        $(function() {
+          var Counter = AV.Object.extend('Counter');
+          if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+
+      <!-- 多说公共 js 代码 start -->
+      <script type="text/javascript">
+        var duoshuoQuery = {
+          short_name: 'IO10'
+        };
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';
+          ds.async = true;
+          ds.src = '/js/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+      </script>
+      <!-- 多说公共 js 代码 end -->
+
+      <!-- Swiftye -->
+
+
+      <!-- Local Search-->
+
+      <script>
+        var searchFunc = function(path, search_id, content_id) {
+          'use strict';
+          $.ajax({
+            url: path,
+            dataType: 'xml',
+            success: function(xmlResponse) {
+              // get the contents from search data
+              var datas = $('entry', xmlResponse).map(function() {
+                return {
+                  title: $('title', this).text(),
+                  content: $('content', this).text(),
+                  url: $('url', this).text()
+                };
+              }).get();
+              var $input = document.getElementById(search_id);
+              var $resultContent = document.getElementById(content_id);
+              $input.addEventListener('input', function() {
+                var str = '<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length <= 0) {
+                  return;
+                }
+                // perform local searching
+                datas.forEach(function(data) {
+                  var isMatch = true;
+                  var content_index = [];
+                  var data_title = data.title.trim().toLowerCase();
+                  var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                  var data_url = data.url;
+                  var index_title = -1;
+                  var index_content = -1;
+                  var first_occur = -1;
+                  // only match artiles with not empty titles and contents
+                  if (data_title != '' && data_content != '') {
+                    keywords.forEach(function(keyword, i) {
+                      index_title = data_title.indexOf(keyword);
+                      index_content = data_content.indexOf(keyword);
+                      if (index_title < 0 && index_content < 0) {
+                        isMatch = false;
+                      } else {
+                        if (index_content < 0) {
+                          index_content = 0;
+                        }
+                        if (i === 0) {
+                          first_occur = index_content;
+                        }
+                      }
+                    });
+                  }
+                  // show search results
+                  if (isMatch) {
+                    str += '<li><a href="' + data_url + '" class="search-result-title" target="_blank">' + data_title;
+                    var content = data.content.trim().replace(/<[^>]+>/g, '');
+                    if (first_occur >= 0) {
+                      // cut out characters
+                      var start = first_occur - 6;
+                      var end = first_occur + 6;
+                      if (start < 0) {
+                        start = 0;
+                      }
+                      if (start === 0) {
+                        end = 10;
+                      }
+                      if (end > content.length) {
+                        end = content.length;
+                      }
+                      var match_content = content.substr(start, end);
+                      // highlight all keywords
+                      keywords.forEach(function(keyword) {
+                        var regS = new RegExp(keyword, 'gi');
+                        match_content = match_content.replace(regS, '<em class="search-keyword">' + keyword + '</em>');
+                      })
+                      str += '<p class="search-result">' + match_content + '...</p>' + '</a>';
+                    }
+                  }
+                });
+                $resultContent.innerHTML = str;
+              });
+            }
+          });
+        }
+      </script>
+
+      <script>
+        var inputArea = document.querySelector('#search');
+        var getSearchFile = function() {
+          var path = 'search.xml';
+          searchFunc(path, 'search', 'local-search-result');
+        }
+
+        if (inputArea) {
+          inputArea.onfocus = function() {
+            getSearchFile();
+          }
+        }
+      </script>
+
+
+      <!-- Window Load-->
+      <script>
+        $(window).load(function() {
+          // Post_Toc parent position fixed
+          $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+        });
+      </script>
+
+      <!-- MathJax Load-->
+    </main>
+  </div>
+</body>
+
+</html>

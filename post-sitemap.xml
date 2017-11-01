@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://www.pangjian.me</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2015/02/17/%E7%AC%AC%E4%B8%80%E7%AF%87blog/</loc>
+        <lastmod>2017-11-01T11:45:40.335Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2017/01/24/whole-site-https/</loc>
+        <lastmod>2017-11-01T11:45:40.334Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/whole-site-https/https.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2016/03/05/web-cache-detail/</loc>
+        <lastmod>2017-11-01T11:45:40.334Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/web-cache-detail/web-cache.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2016/05/25/travis-ci-hexo/</loc>
+        <lastmod>2017-11-01T11:45:40.334Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/travis-ci-hexo/travis-ci.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2015/03/09/track-u-without-cookie/</loc>
+        <lastmod>2017-11-01T11:45:40.333Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/track-u-without-cookie/cookie.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2015/03/24/site-search-with-swiftype/</loc>
+        <lastmod>2017-11-01T11:45:40.333Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/site-search-with-swiftype/swiftype.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2015/09/15/recent-thinking-2015-09/</loc>
+        <lastmod>2017-11-01T11:45:40.333Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/recent-thinking/thinking.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2015/02/27/realtime-count-firebase/</loc>
+        <lastmod>2017-11-01T11:45:40.333Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/realtime-count-firebase/firebase.PNG</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2015/12/03/pjax-your-blog/</loc>
+        <lastmod>2017-11-01T11:45:40.332Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/pjax-your-blog/pjax.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2015/11/18/node-on-browser-browserify/</loc>
+        <lastmod>2017-11-01T11:45:40.332Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/node-on-browser-browserify/browserify.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2015/10/30/json-and-java-object2/</loc>
+        <lastmod>2017-11-01T11:45:40.332Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/json-and-java-object/JSON.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2015/09/12/json-and-java-object/</loc>
+        <lastmod>2017-11-01T11:45:40.331Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/json-and-java-object/JSON.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2015/04/11/hexo-update-to-3-0/</loc>
+        <lastmod>2017-11-01T11:45:40.331Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/hexo-update-to-3-0/hexo3a.png</image:loc>
+        </image:image>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/hexo-update-to-3-0/hexo3b.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2016/02/07/happy-new-year-2016/</loc>
+        <lastmod>2017-11-01T11:45:40.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/happy-new-year-2016/happy.jpg</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2016/12/02/deploy-nodejs-pm2-1/</loc>
+        <lastmod>2017-11-01T11:45:40.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/deploy-nodejs-pm2-1/pm2.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2016/06/01/cnmp-local-npm-server/</loc>
+        <lastmod>2017-11-01T11:45:40.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/cnpm-local-npm-server/cnpmtitle.png</image:loc>
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>http://www.pangjian.me/2016/01/13/a-strange-bug/</loc>
+        <lastmod>2017-11-01T11:45:40.329Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+            <image:loc>http://www.pangjian.me/resources/a-strange-bug/BUG.png</image:loc>
+        </image:image>
+
+    </url>
+
+</urlset>
+<!-- XML Sitemap generated by Hexo SEO Friendly Sitemap Generator -->

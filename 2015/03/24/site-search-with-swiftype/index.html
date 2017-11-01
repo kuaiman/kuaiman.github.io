@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.2.6 -->
+
+  <!-- Title -->
+
+  <title>
+
+    使用Swiftype为静态博客添加站内搜索 | IO10|PangJian&#39;s Blog
+  </title>
+
+  <!-- Favicons -->
+  <link rel="icon shortcut" type="image/ico" href="favicon.png">
+  <link rel="icon" sizes="192x192" href="/img/favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Meta & Info -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0097A7">
+  <meta name="author" content="Pang Jian">
+  <meta name="description" content="简约 是复杂的最终形式">
+  <meta name="keywords" content="null">
+
+  <!--iOS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-title" content="Title">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="480">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="IO10|PangJian&#39;s Blog">
+
+  <!-- The Open Graph protocol -->
+  <meta property="og:url" content="http://www.pangjian.me">
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="使用Swiftype为静态博客添加站内搜索 | IO10|PangJian&#39;s Blog">
+  <meta property="og:description" content="简约 是复杂的最终形式">
+
+  <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+  <!-- Import CSS -->
+  <link rel="stylesheet" href="/css/material.min.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.min.css" type="text/css">
+  <!-- Config CSS -->
+
+
+  <!-- Other Styles -->
+  <style>
+    body,
+    html {
+      font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+
+    a {
+      color: #00838F;
+    }
+
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge {
+      background-color: #0097A7 !important;
+    }
+
+    /* Sidebar User Drop Down Menu Text Color */
+
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+      color: #0097A7 !important;
+    }
+
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover>a,
+    .sidebar-colored .sidebar-nav li:hover>a i,
+    .sidebar-colored .sidebar-nav li>a:hover,
+    .sidebar-colored .sidebar-nav li>a:hover i,
+    .sidebar-colored .sidebar-nav li>a:focus i,
+    .sidebar-colored .sidebar-nav>.open>a,
+    .sidebar-colored .sidebar-nav>.open>a:hover,
+    .sidebar-colored .sidebar-nav>.open>a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+      color: #0097A7 !important;
+    }
+
+    .toTop {
+      background: #757575 !important;
+    }
+
+    .material-layout .material-post>.material-nav,
+    .material-layout .material-index>.material-nav,
+    .material-nav a {
+      color: #757575;
+    }
+
+    #scheme-Paradox .MD-burger-layer {
+      background-color: #757575;
+    }
+
+    #scheme-Paradox #post-toc-trigger-btn {
+      color: #757575;
+    }
+
+    .post-toc a:hover {
+      color: #00838F;
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width:480px) {
+      .post_thumbnail-custom {
+        min-height: 200px;
+      }
+    }
+
+    @media screen and (min-width: 481px) {
+      .post_thumbnail-custom {
+        min-height: 350px;
+      }
+    }
+  </style>
+
+
+  <!-- Theme Background Related-->
+
+  <style>
+    body {
+      background-image: url(/img/bg.png);
+    }
+  </style>
+
+
+
+
+  <!-- Fade Effect -->
+
+  <style>
+    .fade {
+      transition: all 800ms linear;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+
+    .fade.out {
+      opacity: 0;
+    }
+  </style>
+  <script src="/js/jquery.min.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" href="/css/highlight/atom-one-dark.css" type="text/css">
+
+  <!-- UC Browser Compatible-->
+  <script>
+    var agent = navigator.userAgent.toLowerCase();
+    if (agent.indexOf('ucbrowser') > 0) {
+      document.write('<link rel="stylesheet" href="/css/uc.css" type="text/css">');
+      alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+    }
+  </script>
+
+  <!-- Custom Head -->
+
+</head>
+
+
+<body id="scheme-Paradox">
+  <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+
+
+    <!-- Main Container -->
+    <main class="material-layout__content" id="main">
+      <div id="pjax">
+
+        <!-- Top Anchor -->
+        <div id="top"></div>
+
+
+        <!-- Hamburger Button -->
+        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+
+
+        <!-- Post TOC -->
+
+        <!-- Back Button -->
+        <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+        <!-- Left aligned menu below button -->
+        <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+        <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+          <ol class="post-toc">
+            <li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#效果展示"><span class="post-toc-number">1.</span> <span class="post-toc-text">效果展示</span></a></li>
+            <li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现步骤："><span class="post-toc-number">2.</span> <span class="post-toc-text">实现步骤：</span></a>
+              <ol class="post-toc-child">
+                <li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#申请Swiftype账号"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">申请Swiftype账号</span></a></li>
+                <li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将搜索框安装到网站"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">将搜索框安装到网站</span></a></li>
+                <li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优化搜索结果"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">优化搜索结果</span></a></li>
+                <li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为搜索结果添加缩略图"><span class="post-toc-number">2.0.4.</span> <span class="post-toc-text">为搜索结果添加缩略图</span></a></li>
+              </ol>
+            </li>
+          </ol>
+          </li>
+          </ol>
+
+          <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+        </ul>
+
+
+        <!-- Layouts -->
+
+        <!-- Post Module -->
+        <div class="material-post_container">
+
+          <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+              <!-- Post Header(Thumbnail & Title) -->
+              <!-- Paradox Post Header -->
+
+              <!-- Custom Thumbnail -->
+              <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/resources/site-search-with-swiftype/swiftype.png)">
+
+                <p class="article-headline-p">
+                  使用Swiftype为静态博客添加站内搜索
+                </p>
+              </div>
+
+
+              <!-- Paradox Post Info -->
+              <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+                <!-- Author Avatar -->
+                <div id="author-avatar">
+                  <img src="/img/myavatar.jpg" width="44px" height="44px" alt="Author Avatar" />
+                </div>
+                <!-- Author Name & Date -->
+                <div>
+                  <strong>Pang Jian</strong>
+                  <span>3月 24, 2015</span>
+                </div>
+
+                <div class="section-spacer"></div>
+                <div>
+                  <span class="post-count">总字数：896</span>
+                  <span class="post-count">预计阅读：3 min</span>
+                </div>
+
+                <!-- Favorite -->
+                <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+                <!-- Qrcode -->
+
+                <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+                  <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC1ElEQVR42u3aQW7DMAwEwPz/0+0DiiRLUi5saXwK0ljW+FCCXL1+jrxe2NjY2NjY2NjY2Ldkv+Lr713J53crfP5N8sTynrGxsbG3Zn/51//xN9VNv7trslqyZ2xsbOwT2Ek5SUrFZ1jyOvJvCiUQGxsbGztoA3r4ahuDjY2Njb2KPVmhVw6xsbGxsedDpXcPyEtOPkLKSZfP0rCxsbFvz85D0/t8/td8GxsbG/vG7OqVFLBq2cuL2Wjn2NjY2Juye6P/3tB/3ur0IgpsbGzsvdnJgychwWSF+fgJGxsb+0z2WkY+okrAvbYHGxsbe292b1iTHK9J/lptePKihY2NjX0OO9lu8v3VjUo14sXGxsY+h51vPW9dVmHyYtYMerGxsbG3YOctx5cYtbXRamlMXtOCw5fY2NjYj2VHcWlxrJO3HJNgOCql2NjY2Fuzq3FsLzzIB/1JbJysiY2NjX0Cu1qu8pB4Ug6r4XG0AjY2Nvam7OTm6lBp0sb0AuCofGJjY2Nvyi4cXlz0TR4h5AFwFFdgY2Njb8quDpWqRyqrL6h6fCcffmFjY2PvzZ6EBHkRyteplsYkwMDGxsbelV3dRJXXO16ZF7bm4UtsbGzsY9hrI+GkzZiMnJYVMGxsbOxHsfPykxezPHjIy+flZ06xsbGxH8vuFapqe5C/plURcrluY2NjY2/H7kWqvUM2y6Lcz8/FxsbGPoA9aRvyJqQ6Wrq8gGFjY2NvxK4Om5KCNylCveZnFPRiY2NjP5BdvZJNJ41NL9DtNT/Y2NjYe7Mng/58Q+VQtnXos1y3sbGxsTdi50WrCp4Pg/JA4kuZxMbGxj6AnR9wnAcJr8uut0URGxsbGzvmJcOgfOUknMDGxsbG7rFHB2iKx3qqjRM2Njb2mexJuDs5oDN/QVHkjI2Njb01uzesyUf/+euoBsx5dIGNjY29K/ucCxsbGxsbGxsbG/s21y+DcnIUSpX1AgAAAABJRU5ErkJggg==">
+                </ul>
+
+
+                <!-- Tags (bookmark) -->
+
+                <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+                  <li class="mdl-menu__item">
+                    <a class="post_tag-link" href="/tags/hexo/">hexo</a></li>
+                  <li class="mdl-menu__item"><a class="post_tag-link" href="/tags/site-search/">site search</a></li>
+                  <li class="mdl-menu__item"><a class="post_tag-link" href="/tags/swiftype/">swiftype</a></li>
+                  <li class="mdl-menu__item"><a class="post_tag-link" href="/tags/技术/">技术</a>
+                </ul>
+
+
+                <!-- Share -->
+                <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+
+                  <!-- Leancloud Views -->
+                  <a class="post_share-link" href="#">
+                    <li class="mdl-menu__item">
+                      <span id="/2015/03/24/site-search-with-swiftype/" class="leancloud-views_num" data-flag-title="使用Swiftype为静态博客添加站内搜索">
+     &nbsp;浏览量
+</span>
+                    </li>
+                  </a>
+
+
+
+
+                  <!-- Share Weibo -->
+
+                  <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=使用Swiftype为静态博客添加站内搜索&url=http://www.pangjian.me//2015/03/24/site-search-with-swiftype/index.html&pic=&searchPic=false&style=simple" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到微博
+                    </li>
+                  </a>
+
+
+                  <!-- Share Twitter -->
+
+                  <a class="post_share-link" href="https://twitter.com/intent/tweet?text=使用Swiftype为静态博客添加站内搜索&url=http://www.pangjian.me//2015/03/24/site-search-with-swiftype/index.html&via=Pang Jian" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 Twitter
+                    </li>
+                  </a>
+
+
+                  <!-- Share Facebook -->
+
+                  <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.pangjian.me//2015/03/24/site-search-with-swiftype/index.html" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 Facebook
+                    </li>
+                  </a>
+
+
+                  <!-- Share Google+ -->
+
+                  <a class="post_share-link" href="https://plus.google.com/share?url=http://www.pangjian.me//2015/03/24/site-search-with-swiftype/index.html" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 Google+
+                    </li>
+                  </a>
+
+
+                  <!-- Share LinkedIn -->
+
+                  <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.pangjian.me//2015/03/24/site-search-with-swiftype/index.html&title=使用Swiftype为静态博客添加站内搜索" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 LinkedIn
+                    </li>
+                  </a>
+
+
+                  <!-- Share QQ -->
+
+                  <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=IO10|PangJian&#39;s Blog&title=使用Swiftype为静态博客添加站内搜索&summary=简约 是复杂的最终形式&pics=http://www.pangjian.mefavicon.png&url=http://www.pangjian.me/2015/03/24/site-search-with-swiftype/index.html"
+                    target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 QQ
+                    </li>
+                  </a>
+
+
+                  <!-- Share Telegram -->
+
+                </ul>
+              </div>
+
+
+              <!-- Post Content -->
+              <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+
+                <blockquote>
+                  <p>为网站、App提供站内搜索的Swiftype获1300万美元B轮融资。Swiftype可以为网站及移动App提供内置搜索引擎服务，搜索服务的部署非常简单，只需要插入一行JS代码即可搞定。于Google相比，高度可定制化是它的优势。<br>来自：36Kr</p>
+                </blockquote>
+                <a id="more"></a>
+                <p>之前一直用的默认的百度搜索，由于某种问题一直效果不理想。Google又被墙了（无法访问），也没法使用。在微博上看到文章开头这个新闻，突然有了拿来用的想法。</p>
+                <h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2>
+                <p>点击本站右上角的搜索图标，在弹出的模态窗口中输入你想要搜索的内容。怎么样，Swiftype真是“天生异禀，骨骼惊奇”。自动补全、实时展示搜索结果，搜索结果还有缩略图展示。<br>如图：<br><img src="/resources/site-search-with-swiftype/searchresult.PNG" alt="搜索结果"></p>
+                <h2 id="实现步骤："><a href="#实现步骤：" class="headerlink" title="实现步骤："></a>实现步骤：</h2>
+                <h4 id="申请Swiftype账号"><a href="#申请Swiftype账号" class="headerlink" title="申请Swiftype账号"></a>申请Swiftype账号</h4>
+                <p>进入<a href="https://swiftype.com" target="_blank" rel="external">Swiftype官网</a>，注册一个免费账号。然后按照引导将你的网址输入给Swiftype，Swiftype就会自动抓取站点的所有页面。</p>
+                <h4 id="将搜索框安装到网站"><a href="#将搜索框安装到网站" class="headerlink" title="将搜索框安装到网站"></a>将搜索框安装到网站</h4>
+                <p>切换到install标签，如图：<br><img src="/resources/site-search-with-swiftype/install.PNG" alt="install面板"><br>按照你喜欢的方式选择搜索页面出现的方式。我选择的直接将搜索结果展示在本页的模态窗口上。点击获取代码，你会得到一段js代码。将这段代码安装在你网站的任意位置即可，剩下的就交给Swiftype去做吧。它会自动创建一个搜索按钮，点击一下，就能出现搜索页面，动画效果也很漂亮。<br><strong>但是，如果我们不喜欢那个在右下角丑丑的搜索按钮怎么办？</strong><br>因为我的网站有自己的搜索按钮，直接用这个现成的不是很好？我为这个问题可是被折磨了一下午。最后发现解决办法是那么的简单..<br>将你的搜索按钮增加一个<code>class</code>,值为<code>st-search-launcher</code><br>我的代码如下：<br>
+                  <figure class="highlight html">
+                    <table>
+                      <tr>
+                        <td class="code">
+                          <pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">id</span>=<span class="value">"nav-search-btn"</span> <span class="attribute">class</span>=<span class="value">"nav-icon st-search-launcher"</span> <span class="attribute">title</span>=<span class="value">"Search"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                </p>
+                <p>就这样，自动添加的搜索按钮没有了，点一下网站自己的搜索按钮，弹出了搜索窗口。大功告成！</p>
+                <h4 id="优化搜索结果"><a href="#优化搜索结果" class="headerlink" title="优化搜索结果"></a>优化搜索结果</h4>
+                <p>在rankings标签可以对你的搜索结果进行管理。比如排序、删除某些搜索结果、增加一个特定的搜索结果等等，自定义空间很大。<br><img src="/resources/site-search-with-swiftype/manageresult.PNG" alt="管理搜索结果"></p>
+                <h4 id="为搜索结果添加缩略图"><a href="#为搜索结果添加缩略图" class="headerlink" title="为搜索结果添加缩略图"></a>为搜索结果添加缩略图</h4>
+                <p>能为搜索结果添加缩略图当然很炫。怎么做呢？也很简单！Swiftype的文档上说只需要在页面的header中添加一个<code>meta</code>标签就可以。<br>
+                  <figure class="highlight html">
+                    <table>
+                      <tr>
+                        <td class="code">
+                          <pre><span class="line"><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">property</span>=<span class="value">"st:image"</span> <span class="attribute">content</span>=<span class="value">"图片url"</span>&gt;</span></span><br></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                </p>
+                <p>以Hexo为例，在<code>head.ejs</code>中增加这样一段代码<br>
+                  <figure class="highlight html">
+                    <table>
+                      <tr>
+                        <td class="code">
+                          <pre><span class="line"><span class="tag">&lt;<span class="title">%</span> <span class="attribute">if</span> (<span class="attribute">page.photos</span> &amp;&amp; <span class="attribute">page.photos.length</span>)&#123; %&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">property</span>=<span class="value">"st:image"</span> <span class="attribute">content</span>=<span class="value">"&lt;%- url_for(page.photos[0]) %&gt;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">%</span> &#125; %&gt;</span></span><br></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                </p>
+                <p>意思就是，如果文章中有photos（就是展示在文章头部的fancybox），就在html中添加meta标签，于fancybox使用一样的图片，如果fancybox有多个图片，那么就是用第一张。这样在使用<code>hexo d</code>生成博客的时候，就会自动在每一个包含fancybox的文章页面上加入这个<code>meta</code>标签，Swiftype就会为这片文章的搜索结果显示缩略图。</p>
+                <p>就这样，你的站内搜索就已经完成。如果有其他更好的玩法，欢迎留言讨论。<br>
+                  <span class='source'><blockquote class='source'><p>转载请注明出处：http://www.pangjian.me/2015/03/24/site-search-with-swiftype/</p><p>访问原文「<a href='http://www.pangjian.me/2015/03/24/site-search-with-swiftype/'>使用Swiftype为静态博客添加站内搜索</a>」获取最佳阅读体验并参与讨论</p></blockquote></span>
+                  <script type="text/javascript">
+                    (function() {
+                      Element.prototype.remove = function() {
+                        this.parentElement.removeChild(this);
+                      }
+                      NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+                        for (var i = this.length - 1; i >= 0; i--) {
+                          if (this[i] && this[i].parentElement) {
+                            this[i].parentElement.removeChild(this[i]);
+                          }
+                        }
+                      }
+                      var domain = document.domain;
+                      var white_list = ['pangjian.info', 'www.pangjian.info', 'pangjian.me', 'www.pangjian.me', 'localhost', '127.0.0.1'];
+                      if (white_list.indexOf(domain) >= 0) {
+                        var elements = document.getElementsByClassName('source');
+                        elements.remove();
+                      }
+                    })()
+                  </script>
+
+                </p>
+
+
+
+              </div>
+
+
+
+              <!-- Post Comments -->
+
+              <!-- 使用多说评论 -->
+              <link rel="stylesheet" href="/css/duoshuo.min.css" type="text/css">
+              <style>
+                #ds-thread #ds-reset .ds-post-button {
+                  background-color: #0097A7 !important;
+                }
+
+                #ds-wrapper #ds-reset .ds-icons-32 {
+                  background-color: #0097A7 !important;
+                }
+
+                #ds-reset .ds-highlight {
+                  color: #0097A7 !important;
+                }
+              </style>
+              <div id="comments">
+                <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="2015/03/24/site-search-with-swiftype/" data-url="http://www.pangjian.me/2015/03/24/site-search-with-swiftype/" data-title="使用Swiftype为静态博客添加站内搜索">
+                </div>
+                <!-- 多说评论框 end -->
+              </div>
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+              <!-- Prev Nav -->
+
+              <a href="/2015/04/11/hexo-update-to-3-0/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+
+
+              <!-- Section Spacer -->
+              <div class="section-spacer"></div>
+
+              <!-- Next Nav -->
+
+              <a href="/2015/03/09/track-u-without-cookie/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+
+            </nav>
+          </div>
+        </div>
+
+
+        <!-- Overlay For Active Sidebar -->
+        <div class="sidebar-overlay"></div>
+
+        <!-- Material sidebar -->
+        <aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+          <div id="sidebar-main">
+            <!-- Sidebar Header -->
+            <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+              <!-- Top bar -->
+              <div class="top-bar"></div>
+
+              <!-- Sidebar toggle button -->
+              <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+              <!-- Sidebar Avatar -->
+              <div class="sidebar-image">
+                <img src="/img/myavatar.jpg" alt="Pang Jian's avatar">
+              </div>
+
+              <!-- Sidebar Email -->
+              <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        pangjian1010@gmail.com
+        <b class="caret"></b>
+    </a>
+            </div>
+
+            <!-- Sidebar Navigation  -->
+            <ul class="nav sidebar-nav">
+              <!-- User dropdown  -->
+              <li class="dropdown">
+                <ul id="settings-dropdown" class="dropdown-menu">
+
+                  <li>
+                    <a href="mailto:pangjian1010@gamil.com" target="_blank" title="Email Me">
+                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+
+              <!-- Homepage -->
+              <li id="sidebar-first-li">
+                <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+            主页
+        </a>
+              </li>
+
+              <!-- I'm Feeling Lucky -->
+              <!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+    -->
+
+              <!-- Archives  -->
+              <li class="dropdown">
+                <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2016/02/">二月 2016<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2016/01/">一月 2016<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/12/">十二月 2015<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/11/">十一月 2015<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/10/">十月 2015<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/09/">九月 2015<span class="sidebar_archives-count">2</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/04/">四月 2015<span class="sidebar_archives-count">1</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/03/">三月 2015<span class="sidebar_archives-count">2</span></a></li>
+                  <li><a class="sidebar_archives-link" href="/archives/2015/02/">二月 2015<span class="sidebar_archives-count">2</span></a>
+                </ul>
+                </li>
+
+                <!-- Categories  -->
+
+
+                <!-- Divider -->
+                <li class="divider"></li>
+
+
+                <!-- Pages  -->
+
+                <li>
+                  <a href="/About" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+                </li>
+
+                <li>
+                  <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">cloud circle</i>
+                
+                标签云
+            </a>
+                </li>
+
+                <li>
+                  <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                友情链接
+            </a>
+                </li>
+
+
+                <!-- Article Numebr  -->
+                <li>
+                  <a href="/archives">
+            文章总数
+            <span class="sidebar-badge">17</span>
+        </a>
+                </li>
+            </ul>
+
+            <!-- Sidebar Divider -->
+            <div class="sidebar-divider"></div>
+
+            <!-- Sidebar Footer -->
+            <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+            <!-- Theme Material
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+ -->
+            <!-- Help & Support -->
+            <!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+    sidebar.help
+    <span class="mdl-button__ripple-container">
+      <span class="mdl-ripple"></span>
+    </span>
+  </div>
+</a>
+-->
+
+            <!-- Feedback -->
+            <!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+            <!-- Abount Theme -->
+            <!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+          </div>
+
+          <!-- Sidebar Sponsor -->
+
+        </aside>
+
+      </div>
+
+
+      <!-- Footer Top Button -->
+      <div class="toTop-wrap">
+        <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+      </div>
+
+
+      <!--Footer-->
+      <footer class="mdl-mini-footer" id="bottom">
+
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+          <!-- Twitter -->
+
+
+          <!-- Facebook -->
+
+
+          <!-- Google + -->
+
+          <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button></a>
+
+
+          <!-- Weibo -->
+
+          <a href="http://weibo.com/siriuspj" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button></a>
+
+
+          <!-- Instagram -->
+
+
+          <!-- Tumblr -->
+
+
+          <!-- Github -->
+
+          <a href="https://github.com/pangjian" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button></a>
+
+
+          <!-- LinkedIn -->
+
+          <a href="https://www.linkedin.com/in/健-庞-44777310b" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-linkedin.png);">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button></a>
+
+
+          <!-- Zhihu -->
+
+
+          <!-- Bilibili -->
+
+
+          <!-- Telegram -->
+
+        </div>
+
+        <!--Copyright-->
+        <div id="copyright">Copyright&nbsp;©&nbsp;
+          <script type="text/javascript">
+            var fd = new Date();
+            document.write(fd.getFullYear());
+          </script>&nbsp;IO10|PangJian's Blog
+          <br>Documentation licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"><b>CC BY-SA 4.0</b></a>.
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+          <div>
+            <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+            <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+          </div>
+        </div>
+
+      </footer>
+
+      <!-- Import File -->
+      <script src="/js/highlight.min.js" type="text/javascript"></script>
+      <script src="/js/js.js" type="text/javascript"></script>
+      <script src="/js/nprogress.js" type="text/javascript"></script>
+
+      <script type="text/javascript">
+        NProgress.configure({
+          showSpinner: true
+        });
+        NProgress.start();
+
+        $('#nprogress .bar').css({
+          'background': '#FF4081'
+        });
+        $('#nprogress .peg').css({
+          'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+        });
+        $('#nprogress .spinner-icon').css({
+          'border-top-color': '#FF4081',
+          'border-left-color': '#FF4081'
+        });
+
+        setTimeout(function() {
+          NProgress.done();
+          $('.fade').removeClass('out');
+        }, 800);
+      </script>
+
+
+      <script src="/js/smoothscroll.js" type="text/javascript"></script>
+
+
+
+
+      <!-- Leancloud -->
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+      <script>
+        AV.initialize("BvJcby3BNlDWQWq9qjji2NEK-gzGzoHsz", "3IcnGJ5Ad8PCCzUe2vLuDIaz");
+      </script>
+      <script>
+        function showTime(Counter) {
+          var query = new AV.Query(Counter);
+          $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+              success: function(results) {
+                if (results.length === 0) {
+                  var content = '0 ' + $(document.getElementById(url)).text();
+                  $(document.getElementById(url)).text(content);
+                  return;
+                }
+                for (var i = 0; i < results.length; i++) {
+                  var object = results[i];
+                  var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                  $(document.getElementById(url)).text(content);
+                }
+              },
+              error: function(object, error) {
+                console.log('Error: ' + error.code + ' ' + error.message);
+              }
+            });
+          });
+        }
+
+        function addCount(Counter) {
+          var Counter = AV.Object.extend('Counter');
+          url = $('.leancloud-views_num').attr('id').trim();
+          title = $('.leancloud-views_num').attr('data-flag-title').trim();
+          var query = new AV.Query(Counter);
+          query.equalTo('url', url);
+          query.find({
+            success: function(results) {
+              if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                  success: function(counter) {
+                    var content = counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                    $(document.getElementById(url)).text(content);
+                  },
+                  error: function(counter, error) {
+                    console.log('Failed to save Visitor num, with error message: ' + error.message);
+                  }
+                });
+              } else {
+                var newcounter = new Counter();
+                newcounter.set('title', title);
+                newcounter.set('url', url);
+                newcounter.set('time', 1);
+                newcounter.save(null, {
+                  success: function(newcounter) {
+                    console.log('newcounter.get(\'time\')=' + newcounter.get('time'));
+                    var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                    $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                    console.log('Failed to create');
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.log('Error:' + error.code + ' ' + error.message);
+            }
+          });
+        }
+        $(function() {
+          var Counter = AV.Object.extend('Counter');
+          if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+          } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+          }
+        });
+      </script>
+
+
+
+
+
+      <!-- 多说公共 js 代码 start -->
+      <script type="text/javascript">
+        var duoshuoQuery = {
+          short_name: 'IO10'
+        };
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';
+          ds.async = true;
+          ds.src = '/js/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+      </script>
+      <!-- 多说公共 js 代码 end -->
+
+      <!-- Swiftye -->
+
+
+      <!-- Local Search-->
+
+      <script>
+        var searchFunc = function(path, search_id, content_id) {
+          'use strict';
+          $.ajax({
+            url: path,
+            dataType: 'xml',
+            success: function(xmlResponse) {
+              // get the contents from search data
+              var datas = $('entry', xmlResponse).map(function() {
+                return {
+                  title: $('title', this).text(),
+                  content: $('content', this).text(),
+                  url: $('url', this).text()
+                };
+              }).get();
+              var $input = document.getElementById(search_id);
+              var $resultContent = document.getElementById(content_id);
+              $input.addEventListener('input', function() {
+                var str = '<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length <= 0) {
+                  return;
+                }
+                // perform local searching
+                datas.forEach(function(data) {
+                  var isMatch = true;
+                  var content_index = [];
+                  var data_title = data.title.trim().toLowerCase();
+                  var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                  var data_url = data.url;
+                  var index_title = -1;
+                  var index_content = -1;
+                  var first_occur = -1;
+                  // only match artiles with not empty titles and contents
+                  if (data_title != '' && data_content != '') {
+                    keywords.forEach(function(keyword, i) {
+                      index_title = data_title.indexOf(keyword);
+                      index_content = data_content.indexOf(keyword);
+                      if (index_title < 0 && index_content < 0) {
+                        isMatch = false;
+                      } else {
+                        if (index_content < 0) {
+                          index_content = 0;
+                        }
+                        if (i === 0) {
+                          first_occur = index_content;
+                        }
+                      }
+                    });
+                  }
+                  // show search results
+                  if (isMatch) {
+                    str += '<li><a href="' + data_url + '" class="search-result-title" target="_blank">' + data_title;
+                    var content = data.content.trim().replace(/<[^>]+>/g, '');
+                    if (first_occur >= 0) {
+                      // cut out characters
+                      var start = first_occur - 6;
+                      var end = first_occur + 6;
+                      if (start < 0) {
+                        start = 0;
+                      }
+                      if (start === 0) {
+                        end = 10;
+                      }
+                      if (end > content.length) {
+                        end = content.length;
+                      }
+                      var match_content = content.substr(start, end);
+                      // highlight all keywords
+                      keywords.forEach(function(keyword) {
+                        var regS = new RegExp(keyword, 'gi');
+                        match_content = match_content.replace(regS, '<em class="search-keyword">' + keyword + '</em>');
+                      })
+                      str += '<p class="search-result">' + match_content + '...</p>' + '</a>';
+                    }
+                  }
+                });
+                $resultContent.innerHTML = str;
+              });
+            }
+          });
+        }
+      </script>
+
+      <script>
+        var inputArea = document.querySelector('#search');
+        var getSearchFile = function() {
+          var path = 'search.xml';
+          searchFunc(path, 'search', 'local-search-result');
+        }
+
+        if (inputArea) {
+          inputArea.onfocus = function() {
+            getSearchFile();
+          }
+        }
+      </script>
+
+
+      <!-- Window Load-->
+      <script>
+        $(window).load(function() {
+          // Post_Toc parent position fixed
+          $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+        });
+      </script>
+
+      <!-- MathJax Load-->
+    </main>
+  </div>
+</body>
+
+</html>
