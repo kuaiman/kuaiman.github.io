@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>IO10|PangJian&#39;s Blog</title>
-  <icon>http://www.gravatar.com/avatar/ff1c70dbf8ed6ac08978f585fb9f2781</icon>
-  <subtitle>PangJian&#39;s Blog</subtitle>
+  <title>Rum&#39;s Blog</title>
+  <icon>http://www.gravatar.com/avatar/e55ee90b57a3efb6973e06ca137a97db</icon>
+  <subtitle>Rum&#39;s Blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pangjian.me/"/>
@@ -10,8 +10,8 @@
   <id>http://www.pangjian.me/</id>
   
   <author>
-    <name>Pang Jian</name>
-    <email>pangjian1010@gmail.com</email>
+    <name>xiaoxiao</name>
+    <email>wujialin0323@gmail.com</email>
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
