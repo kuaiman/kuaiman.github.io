@@ -11,7 +11,7 @@
 
   <title>
 
-    标签: site search | Rum&#39;s Blog
+    myTest | Rum&#39;s Blog
   </title>
 
   <!-- Favicons -->
@@ -47,7 +47,7 @@
   <!-- The Open Graph protocol -->
   <meta property="og:url" content="http://www.pangjian.me">
   <meta property="og:type" content="blog">
-  <meta property="og:title" content="标签: site search | Rum&#39;s Blog">
+  <meta property="og:title" content="myTest | Rum&#39;s Blog">
   <meta property="og:description" content="明天会更好！">
 
   <!--[if lte IE 9]>
@@ -206,88 +206,261 @@
                         </button>
 
 
-        <!-- Index Module -->
-        <div class="material-index mdl-grid">
+        <!-- Post TOC -->
 
-          <div class="locate-thumbnail-symbol"></div>
+        <!-- Back Button -->
+        <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+        <!-- Left aligned menu below button -->
+        <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+        <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+          <ol class="post-toc">
+            <li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Ч��"><span class="post-toc-number">1.</span> <span class="post-toc-text">Ч��</span></a></li>
+          </ol>
+
+          <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+        </ul>
 
 
+        <!-- Layouts -->
 
-          <!-- Paradox Thumbnail -->
-          <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-            <!-- Post Thumbnail -->
+        <!-- Post Module -->
+        <div class="material-post_container">
 
-            <!-- Custom Thumbnail -->
-            <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/resources/site-search-with-swiftype/swiftype.png)">
+          <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+              <!-- Post Header(Thumbnail & Title) -->
+              <!-- Paradox Post Header -->
 
 
-              <!-- Post Title -->
-              <a href="/2015/03/24/site-search-with-swiftype/">
-                <p class="article-headline-p">使用Swiftype为静态博客添加站内搜索</p>
-              </a>
-            </div>
+              <!-- Random Thumbnail -->
+              <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+                <script>
+                  var randomNum = Math.floor(Math.random() * 19 + 1);
 
-            <!-- Post Excerpt -->
-            <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+                  $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+                </script>
 
-              为网站、App提供站内搜索的Swiftype获1300万美元B轮融资。Swiftype可以为网站及移动App提供内置搜索引擎服务，搜索服务的部署非常简单，只需要插入一行JS代码即可搞定。于Google相比，高度可定制化是它的优势。来自：36Kr &nbsp;&nbsp;&nbsp;
-              <span>
-            <a href="/2015/03/24/site-search-with-swiftype/" target="_self">继续阅读</a>
-        </span>
-            </div>
-            <!-- Post_entry Info-->
-            <div id="post_entry-info">
-              <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+
+                <p class="article-headline-p">
+                  myTest
+                </p>
+              </div>
+
+
+              <!-- Paradox Post Info -->
+              <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
                 <!-- Author Avatar -->
                 <div id="author-avatar">
-                  <img src="/img/myavatar.jpg" width="44px" height="44px" alt="xiaoxiao's avatar">
+                  <img src="/img/myavatar.jpg" width="44px" height="44px" alt="Author Avatar" />
                 </div>
+                <!-- Author Name & Date -->
                 <div>
                   <strong>xiaoxiao</strong>
-                  <span>3月 24, 2015</span>
+                  <span>11月 02, 2017</span>
                 </div>
+
+                <div class="section-spacer"></div>
+                <div>
+                  <span class="post-count">总字数：61</span>
+                  <span class="post-count">预计阅读：1 min</span>
+                </div>
+
+                <!-- Favorite -->
+                <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+                <!-- Qrcode -->
+
+                <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+                  <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACZElEQVR42u3aQXLCMBAEQP7/6eSaQ0xmVpaAVOtEUdhW+yAto318/evxwMPDw8PDw8PDezPeIx6/3OjH91efk2ddXTWbGx4eHt4Z3h9LbfCb55irV5C/vnxueHh4eCd5yZKdf34+udmzou0EDw8P7wN5SYncluZ4eHh4n86bLfrJc1fmhoeHh3eel/zhb6PbKD5YuCceHh7eq3j5IdP5z0fP9/Dw8PAC3uxYaxYu5AX30gzx8PDwNvPyhXglos3vNpsPHh4e3kne1eTaJTsJbVtk8hKjkhoPDw/vVl7+4Ht/mTcctPEuHh4e3m5eTm2/z6PYJKoYtg7g4eHhbeO1j5m1AkTLelxM12EEHh4e3k28dokvQoGFo7KlwAIPDw9vM69tF2gL3+jIKph0Hkng4eHh7eblB12zAGI9+KjvjIeHh7eZlxzMz5quVl7HbKvAw8PDO89LLm5ji/aes5IdDw8P7yQvP+xvi+O8BXYl8K3/MeDh4eHdypsV03kbQduUkG9FeHh4eK/ltSNfvtsW1RaGh4eHd5I3a05dn+5sUyliXDw8PLxtvPwYbBZezAro9iANDw8P77W8e0PeHZvK0gEYHh4e3k28vFGgaIEqt402/him1Hh4eHgLvHa0C/3KL/O4GQ8PD+8kb/dBVxtPPH99UZCBh4eHd4TXbgZ3XZU3dS1tDHh4eHjbeEkDQb6gr7+IpK0BDw8P71N4bXGc3H/lqAwPDw/vE3k5Y7Yl5AU9Hh4e3kleUvLOplUHCgsNBHh4eHhneG0EsBIoXF07G3h4eHjnef9v4OHh4eHh4eHhvcH4BtMepYF9rT3uAAAAAElFTkSuQmCC">
+                </ul>
+
+
+                <!-- Tags (bookmark) -->
+
+                <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+                  <li class="mdl-menu__item">
+
+                </ul>
+
+
+                <!-- Share -->
+                <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+
+                  <!-- Leancloud Views -->
+                  <a class="post_share-link" href="#">
+                    <li class="mdl-menu__item">
+                      <span id="/2017/11/02/myTest/" class="leancloud-views_num" data-flag-title="myTest">
+     &nbsp;浏览量
+</span>
+                    </li>
+                  </a>
+
+
+
+
+                  <!-- Share Weibo -->
+
+                  <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=myTest&url=http://www.pangjian.me//2017/11/02/myTest/index.html&pic=&searchPic=false&style=simple" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到微博
+                    </li>
+                  </a>
+
+
+                  <!-- Share Twitter -->
+
+                  <a class="post_share-link" href="https://twitter.com/intent/tweet?text=myTest&url=http://www.pangjian.me//2017/11/02/myTest/index.html&via=xiaoxiao" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 Twitter
+                    </li>
+                  </a>
+
+
+                  <!-- Share Facebook -->
+
+                  <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.pangjian.me//2017/11/02/myTest/index.html" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 Facebook
+                    </li>
+                  </a>
+
+
+                  <!-- Share Google+ -->
+
+                  <a class="post_share-link" href="https://plus.google.com/share?url=http://www.pangjian.me//2017/11/02/myTest/index.html" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 Google+
+                    </li>
+                  </a>
+
+
+                  <!-- Share LinkedIn -->
+
+                  <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.pangjian.me//2017/11/02/myTest/index.html&title=myTest" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 LinkedIn
+                    </li>
+                  </a>
+
+
+                  <!-- Share QQ -->
+
+                  <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Rum&#39;s Blog&title=myTest&summary=明天会更好！&pics=http://www.pangjian.mefavicon.png&url=http://www.pangjian.me/2017/11/02/myTest/index.html" target="_blank">
+                    <li class="mdl-menu__item">
+                      分享到 QQ
+                    </li>
+                  </a>
+
+
+                  <!-- Share Telegram -->
+
+                </ul>
               </div>
-              <div id="post_entry-right-info">
-                <!-- Category -->
-                <span class="post_entry-category">
-                
-            </span>
 
 
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment">
-                        <span class="ds-thread-count" data-thread-key="2015/03/24/site-search-with-swiftype/" data-count-type="comments"></span>
-                </span>
+              <!-- Post Content -->
+              <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+
+                <p>ǰ�������й����˲��͵�ʱ���������䷢�����и��˵Ĳ��ͷ����ٶȼ��죬���Ǻ������о���һ�¡��ڲ鿴������ʱ��������һ��<code>jquery.pjax.min.js</code>���������˲����ϣ���ȷʵ���ٶȿ���ԭ����<br><code>Pjax</code>����Ҫԭ��������<code>ajax</code>�첽����ҳ�沢�ֲ�ˢ�£�����<code>pushState</code>�޸�url��history�������ͼ�ӵ����<code>ajax</code>�ֲ�ˢ�µ����ƣ�ͬʱҲ������ֻ����<code>ajax</code>�ĵ�ҳ��Ӧ��url�����仯��������SEO������������������ǰ������ҲʧЧ�����⡣
+                  <a href="http://www.github.io" target="_blank" rel="external">github</a>��Google+����ʹ�������ļ������������ϵ��ŵ����⣬ҳ���л��������������������������Լ��Ĺ��ȶ�������Ҳ��ʵ�������������ǳ������ھ�̬��������ÿ��ҳ���л�����ֻ���������ݻ��仯��������</p>
+                <p>���ĵ�����ּ�ڼ�¼����������pjax�Ĺ��̣�Ч�����Բο�<a href="http://www.pangjian.info" target="_blank" rel="external">������</a>�����Ľ���������������ָjQuery�����棬���Բ鿴github�ϵ�<a href="https://github.com/defunkt/jquery-pjax" target="_blank" rel="external">jquery-pjax</a>��</p>
+                <h1 id="Ч��"><a href="#Ч��" class="headerlink" title="Ч��"></a>Ч��</h1>
+                <p>�������棬�ȿ���Ч������pjaxǰ�л�һ��ҳ��������<br><img src="/resources/using-pjax/pajax_before.png" alt="����pjaxǰ"></p>
+                <p>����pjax��…<br><img src="/resources/using-pjax/pjax_after.png" alt="����pjax��"><br>Ч�����Ǻ����Եģ��������ٵ���3�Σ������Ѿ���������Դ�ļ�����û��ˢ�£�û���ظ��������ٶ�Ҳ���������ˡ�</p>
 
 
-                <!-- Post Views -->
-                <span class="post_entry-views">
-            </span>
+
               </div>
+
+
+
+              <!-- Post Comments -->
+
+              <!-- 使用多说评论 -->
+              <link rel="stylesheet" href="/css/duoshuo.min.css" type="text/css">
+              <style>
+                #ds-thread #ds-reset .ds-post-button {
+                  background-color: #0097A7 !important;
+                }
+
+                #ds-wrapper #ds-reset .ds-icons-32 {
+                  background-color: #0097A7 !important;
+                }
+
+                #ds-reset .ds-highlight {
+                  color: #0097A7 !important;
+                }
+              </style>
+              <div id="comments">
+                <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="2017/11/02/myTest/" data-url="http://www.pangjian.me/2017/11/02/myTest/" data-title="myTest">
+                </div>
+                <!-- 多说评论框 end -->
+              </div>
+
             </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+              <!-- Prev Nav -->
+
+
+              <!-- Section Spacer -->
+              <div class="section-spacer"></div>
+
+              <!-- Next Nav -->
+
+              <a href="/2017/01/24/whole-site-https/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+
+            </nav>
           </div>
-
-
-
-
-
-
-
-          <script>
-            var randomNum;
-
-            var locatePost = $('.locate-thumbnail-symbol').next();
-            for (var i = 0; i < 10; i++) {
-              randomNum = Math.floor(Math.random() * 19 + 1);
-
-              locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-' + randomNum);
-              locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-              locatePost = locatePost.next();
-            }
-          </script>
-
         </div>
 
 
@@ -488,6 +661,13 @@ It will not impact the appearance and can give developers a lot of support :)
 
       </div>
 
+
+      <!-- Footer Top Button -->
+      <div class="toTop-wrap">
+        <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+      </div>
 
 
       <!--Footer-->

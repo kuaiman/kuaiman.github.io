@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pangjian.me/"/>
-  <updated>2017-11-01T11:45:40.334Z</updated>
+  <updated>2017-11-02T02:50:03.878Z</updated>
   <id>http://www.pangjian.me/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>myTest</title>
+    <link href="http://www.pangjian.me/2017/11/02/myTest/"/>
+    <id>http://www.pangjian.me/2017/11/02/myTest/</id>
+    <published>2017-11-02T02:24:36.000Z</published>
+    <updated>2017-11-02T02:50:03.878Z</updated>
+    
+    <content type="html"><![CDATA[<p>ǰ�������й����˲��͵�ʱ���������䷢�����и��˵Ĳ��ͷ����ٶȼ��죬���Ǻ������о���һ�¡��ڲ鿴������ʱ��������һ��<code>jquery.pjax.min.js</code>���������˲����ϣ���ȷʵ���ٶȿ���ԭ����<br><code>Pjax</code>����Ҫԭ��������<code>ajax</code>�첽����ҳ�沢�ֲ�ˢ�£�����<code>pushState</code>�޸�url��history�������ͼ�ӵ����<code>ajax</code>�ֲ�ˢ�µ����ƣ�ͬʱҲ������ֻ����<code>ajax</code>�ĵ�ҳ��Ӧ��url�����仯��������SEO������������������ǰ������ҲʧЧ�����⡣  <a href="http://www.github.io" target="_blank" rel="external">github</a>��Google+����ʹ�������ļ������������ϵ��ŵ����⣬ҳ���л��������������������������Լ��Ĺ��ȶ�������Ҳ��ʵ�������������ǳ������ھ�̬��������ÿ��ҳ���л�����ֻ���������ݻ��仯��������</p><p>���ĵ�����ּ�ڼ�¼����������pjax�Ĺ��̣�Ч�����Բο�<a href="http://www.pangjian.info" target="_blank" rel="external">������</a>�����Ľ���������������ָjQuery�����棬���Բ鿴github�ϵ�<a href="https://github.com/defunkt/jquery-pjax" target="_blank" rel="external">jquery-pjax</a>��</p><h1 id="Ч��"><a href="#Ч��" class="headerlink" title="Ч��"></a>Ч��</h1><p>�������棬�ȿ���Ч������pjaxǰ�л�һ��ҳ��������<br><img src="/resources/using-pjax/pajax_before.png" alt="����pjaxǰ"></p><p>����pjax��…<br><img src="/resources/using-pjax/pjax_after.png" alt="����pjax��"><br>Ч�����Ǻ����Եģ��������ٵ���3�Σ������Ѿ���������Դ�ļ�����û��ˢ�£�û���ظ��������ٶ�Ҳ���������ˡ�</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;ǰ�������й����˲��͵�ʱ���������䷢�����и��˵Ĳ��ͷ����ٶȼ��죬���Ǻ������о���һ�¡��ڲ鿴������ʱ��������һ��&lt;code&gt;jquery.pjax.min.js&lt;/code&gt;���������˲����ϣ�
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>全站HTTPS改造</title>
